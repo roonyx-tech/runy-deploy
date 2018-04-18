@@ -4,7 +4,7 @@ const config = require('../../config');
 const { runyConfig, isRunyConfigExist } = require('../helpers/getRunyConfig');
 const { run } = require('../helpers/run');
 
-const setup = () => {
+const setup = (argv) => {
   if (!isRunyConfigExist()) {
     console.log(`${config.configName} has not found`);
     return;
@@ -25,7 +25,7 @@ const setup = () => {
     `mkdir -p ${path}`,
     `cd ${path}`,
     `git clone ${runyConfig.git}`
-  ]);
+  ], argv.verbose);
 };
 
 module.exports = {

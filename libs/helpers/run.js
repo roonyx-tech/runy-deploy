@@ -3,7 +3,7 @@
 const fs = require('fs');
 const ZENCIShell = require('./zenci-shell');
 
-const run = (config, commands) => {
+const run = (config, commands, verbose = false) => {
   const processingCMDS = [];
   const SSH = new ZENCIShell({
     server: {
@@ -34,7 +34,7 @@ const run = (config, commands) => {
       console.log(`Command: ${notice.command} is running`);
     }
 
-    if (notice.status === -1 && notice.output) {
+    if (verbose && notice.status === -1 && notice.output) {
       console.log(notice.output);
     }
   });

@@ -22,11 +22,11 @@ switch (command) {
     init();
     break;
   case 'setup':
-    setup();
+    setup(argv);
     break;
   case 'deploy':
-    deploy();
+    deploy(argv);
     break;
   default:
-    console.log('default');
+    console.log('Please, enter the valid command or use --help');
 }
