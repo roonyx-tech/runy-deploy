@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/roonyx/runy#readme",
   "dependencies": {
+    "debug": "^3.1.0",
+    "ssh2": "^0.6.0",
     "ssh2shell": "^1.9.0",
     "yargs": "^11.0.0"
   }

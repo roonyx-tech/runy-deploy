@@ -14,7 +14,7 @@ const run = (config, commands) => {
       agentForward: true,
     },
     commands,
-    idleTimeOut: 120000,
+    idleTimeOut: 360000,
     idleCommandTime: 300,
   });
 
