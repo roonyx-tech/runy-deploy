@@ -5,11 +5,11 @@ module.exports = {
   username: 'username',
   port: 22,
   remotePath: '/your/project/path',
-  git: 'git@github.com:[username]/[repository-name].git',
+  git: 'link-to-your-git-repository',
   agent: process.env.SSH_AUTH_SOCK,
   commands: [
-    'nmp install',
+    'npm install',
     'git pull origin master',
-    'ng build',
+    'npm build',
   ],
 };
