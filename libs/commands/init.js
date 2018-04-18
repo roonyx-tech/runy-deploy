@@ -1,10 +1,10 @@
 'use strict';
 
 const fs = require('fs');
-const config = require(`${__dirname}/../../config`);
+const config = require('../../config');
 
 const init = () => {
-  fs.copyFile(`${__dirname}/../config.conf.js`, `${process.cwd()}/${config.configName}`, err => {
+  fs.copyFile('../config.conf.js', `${process.cwd()}/${config.configName}`, err => {
     if (err) throw err;
     console.log(`${config.configName} was successfully created`);
   });

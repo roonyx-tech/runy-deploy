@@ -1,6 +1,6 @@
 'use strict';
 
-const config = require(`${__dirname}/../../config`);
+const config = require('../../config');
 const fs = require('fs');
 
 const runyConfigPath = `${process.cwd()}/${config.configName}`;
