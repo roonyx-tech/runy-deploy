@@ -1,10 +1,10 @@
 'use strict';
 
 module.exports = {
-  user: 'username',
+  username: 'username',
   host: '0.0.0.0',
   port: 22,
   remotePath: '/your/project/path',
-  gitSSH: 'git@github.com:[username]/[repository-name].git',
-  privateKey: '/your/private/ssh/key',
+  git: 'git@github.com:[username]/[repository-name].git',
+  agent: process.env.SSH_AUTH_SOCK,
 };

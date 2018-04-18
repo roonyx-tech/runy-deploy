@@ -1,8 +1,8 @@
 'use strict';
 
-const config = require(`${__dirname}/../../config`);
-const { runyConfig, isRunyConfigExist } = require(`${__dirname}/../helpers/getRunyConfig`);
-const SSH = require(`${__dirname}/../helpers/getSSH`);
+const config = require('../../config');
+const { runyConfig, isRunyConfigExist } = require('../helpers/getRunyConfig');
+const { run } = require('../helpers/run');
 
 const setup = () => {
   if (!isRunyConfigExist()) {
@@ -21,13 +21,11 @@ const setup = () => {
 
   const path = paths.join('/');
 
-  const ssh = SSH(runyConfig, [
+  run(runyConfig, [
     `mkdir -p ${path}`,
     `cd ${path}`,
-    `git clone ${runyConfig.gitSSH}`
+    `git clone ${runyConfig.git}`
   ]);
-
-  ssh.connect();
 };
 
 module.exports = {
