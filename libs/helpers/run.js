@@ -45,6 +45,6 @@ const run = (config, commands, verbose = false) => {
 };
 
 module.exports = {
-  run,
+  run
 };
 

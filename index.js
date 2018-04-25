@@ -7,10 +7,10 @@ const yargs = require('yargs');
 yargs
   .command('init', 'Create config file')
   .command('setup', 'Create project structure', {
-    verbose: aliases.verbose,
+    verbose: aliases.verbose
   })
   .command('deploy', 'Deploy project to remote server', {
-    verbose: aliases.verbose,
+    verbose: aliases.verbose
   })
   .help();
 

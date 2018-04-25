@@ -1,6 +1,9 @@
 const config = require('../../config');
-const { runyConfig, isRunyConfigExist } = require('../helpers/getRunyConfig');
-const { run } = require('../helpers/run');
+const run = require('../helpers/run').run;
+const {
+  runyConfig,
+  isRunyConfigExist
+} = require('../helpers/getRunyConfig');
 
 const deploy = (argv) => {
   if (!isRunyConfigExist()) {
@@ -8,7 +11,7 @@ const deploy = (argv) => {
     return;
   }
 
-  const { remotePath } = runyConfig;
+  const remotePath = runyConfig.remotePath;
   if (!remotePath) {
     console.error('remotePath is empty');
     return;
@@ -27,5 +30,5 @@ const deploy = (argv) => {
 };
 
 module.exports = {
-  deploy,
+  deploy
 };

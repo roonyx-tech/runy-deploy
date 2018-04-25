@@ -1,3 +1,3 @@
 module.exports = {
-  configName: 'runy.js',
+  configName: 'runy.js'
 };
