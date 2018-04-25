@@ -1,5 +1,3 @@
-'use strict';
-
 const config = require('../../config');
 const fs = require('fs');
 
@@ -8,7 +6,7 @@ const isRunyConfigExist = () => fs.existsSync(runyConfigPath);
 
 module.exports = {
   isRunyConfigExist,
-  runyConfig: (() => {
-    return isRunyConfigExist() ? require(runyConfigPath) : {}
-  })(),
+  runyConfig: (() => (
+    isRunyConfigExist() ? require(runyConfigPath) : {}
+  ))(),
 };

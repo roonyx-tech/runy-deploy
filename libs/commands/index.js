@@ -1,7 +1,10 @@
-'use strict';
+const { init } = require('./init');
+const { setup } = require('./setup');
+const { deploy } = require('./deploy');
+
 
 module.exports = {
-  init: require('./init').init,
-  setup: require('./setup').setup,
-  deploy: require('./deploy').deploy
+  init,
+  setup,
+  deploy,
 };

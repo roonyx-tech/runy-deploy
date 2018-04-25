@@ -1,6 +1,3 @@
-'use strict';
-
-const fs = require('fs');
 const ZENCIShell = require('./zenci-shell');
 
 const run = (config, commands, verbose = false) => {
@@ -18,29 +15,29 @@ const run = (config, commands, verbose = false) => {
     idleCommandTime: 300,
   });
 
-  SSH.on('commandComplete', notice => {
+  SSH.on('commandComplete', (notice) => {
     if (notice.status === 0) {
-      console.log(`Command: ${notice.command} is successfully completed\n`);
+      console.info(`Command: ${notice.command} is successfully completed\n`);
     } else if (notice.status === 1) {
-      console.log(`Command: ${notice.command} has been crushed`);
-      console.log('===== Output =====\n', notice.output);
+      console.error(`Command: ${notice.command} has been crushed`);
+      console.error('===== Output =====\n', notice.output);
       SSH.end();
     }
   });
 
-  SSH.on('commandProcessing', notice => {
+  SSH.on('commandProcessing', (notice) => {
     if (processingCMDS[processingCMDS.length - 1] !== notice.command) {
       processingCMDS.push(notice.command);
-      console.log(`Command: ${notice.command} is running`);
+      console.info(`Command: ${notice.command} is running`);
     }
 
     if (verbose && notice.status === -1 && notice.output) {
-      console.log(notice.output);
+      console.info(notice.output);
     }
   });
 
-  SSH.on('error', error => {
-    console.log('ERROR:', error);
+  SSH.on('error', (error) => {
+    console.error('ERROR:', error);
     SSH.end();
   });
 
@@ -48,6 +45,6 @@ const run = (config, commands, verbose = false) => {
 };
 
 module.exports = {
-  run
+  run,
 };
 

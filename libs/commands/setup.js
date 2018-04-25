@@ -1,18 +1,16 @@
-'use strict';
-
 const config = require('../../config');
 const { runyConfig, isRunyConfigExist } = require('../helpers/getRunyConfig');
 const { run } = require('../helpers/run');
 
 const setup = (argv) => {
   if (!isRunyConfigExist()) {
-    console.log(`${config.configName} has not found`);
+    console.error(`${config.configName} has not found`);
     return;
   }
 
-  const remotePath = runyConfig.remotePath;
+  const { remotePath } = runyConfig;
   if (!remotePath) {
-    console.log('remotePath is empty');
+    console.error('remotePath is empty');
     return;
   }
 
@@ -24,10 +22,10 @@ const setup = (argv) => {
   run(runyConfig, [
     `mkdir -p ${path}`,
     `cd ${path}`,
-    `git clone ${runyConfig.git}`
+    `git clone ${runyConfig.git}`,
   ], argv.verbose);
 };
 
 module.exports = {
-  setup
+  setup,
 };

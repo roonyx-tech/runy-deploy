@@ -29,5 +29,10 @@
     "ssh2": "^0.6.0",
     "ssh2shell": "^1.9.0",
     "yargs": "^11.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0"
   }
 }
