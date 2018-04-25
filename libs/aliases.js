@@ -1,5 +1,3 @@
-'use strict';
-
 const verbose = {
   describe: 'Show verbose logs',
   demand: false,
