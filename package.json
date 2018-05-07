@@ -1,6 +1,6 @@
 {
   "name": "@roonyx-tech/runy-deploy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Runy is a deploy tool which allows you deploy your frontend projects very easy",
   "main": "index.js",
   "bin": {
@@ -21,7 +21,7 @@
     "frontend-deploy"
   ],
   "author": "roonyx",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/roonyx/runy/issues"
   },

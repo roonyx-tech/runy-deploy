@@ -12,11 +12,11 @@ Your server has to have next requirements to work:
 
 #### Install package
 ```bash
-$ npm install --global runy
+$ npm install --global @roonyx-tech/runy-deploy
 
 OR
 
-$ yarn global add runy
+$ yarn global add @roonyx-tech/runy-deploy
 ```
 
 #### Create config file
