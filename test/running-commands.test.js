@@ -31,19 +31,16 @@ describe('testing of setup command', () => {
   test('the getSetupCommands function return correct array', () => {
     const runyConfig = getRunyConfig();
     const mockGit = 'mock-git-url';
+    const mockRP = '/my/remote/path';
     const result = [
-      'mkdir -p end/slash',
-      'cd end/slash',
-      `git clone ${mockGit}`
+      `mkdir -p ${mockRP}`,
+      `cd ${mockRP}`,
+      `git clone ${mockGit} .`
     ];
 
     expect(Array.isArray(getSetupCommands(runyConfig))).toBe(true);
     expect(getSetupCommands({
-      remotePath: 'end/slash/none-exists',
-      git: mockGit
-    })).toEqual(result);
-    expect(getSetupCommands({
-      remotePath: 'end/slash/exists/',
+      remotePath: mockRP,
       git: mockGit
     })).toEqual(result);
   });
