@@ -1,14 +1,16 @@
 {
-  "name": "runy",
+  "name": "@roonyx-tech/runy-deploy",
   "version": "1.0.0",
-  "description": "Runy is a deploy tool which allows you deploy your frontend project very easy",
+  "description": "Runy is a deploy tool which allows you deploy your frontend projects very easy",
   "main": "index.js",
   "bin": {
     "runy": "./index.js"
   },
   "preferGlobal": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "lint": "node_modules/.bin/eslint . --ext .js"
   },
   "repository": {
     "type": "git",
@@ -35,6 +37,7 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.7.0"
+    "eslint-plugin-react": "^7.7.0",
+    "jest": "^22.4.3"
   }
 }

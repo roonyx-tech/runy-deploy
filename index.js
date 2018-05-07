@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const { init, setup, deploy } = require('./libs/commands');
-const aliases = require('./libs/aliases');
 const yargs = require('yargs');
+const aliases = require('./libs/aliases');
+const handleCommand = require('./libs/command-handler');
 
 yargs
   .command('init', 'Create config file')
@@ -14,19 +14,7 @@ yargs
   })
   .help();
 
-const { argv } = yargs;
+const argv = yargs.argv;
 const command = argv._[0];
 
-switch (command) {
-  case 'init':
-    init();
-    break;
-  case 'setup':
-    setup(argv);
-    break;
-  case 'deploy':
-    deploy(argv);
-    break;
-  default:
-    console.info('Please, enter the valid command or use --help');
-}
+handleCommand(command, argv);

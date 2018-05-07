@@ -1,34 +1,22 @@
-const config = require('../../config');
-const run = require('../helpers/run').run;
-const {
-  runyConfig,
-  isRunyConfigExist
-} = require('../helpers/getRunyConfig');
+const { run } = require('../helpers/run');
+const { getRunyConfig } = require('../helpers/get-runy-config');
 
-const deploy = (argv) => {
-  if (!isRunyConfigExist()) {
-    console.error(`${config.configName} has not found`);
-    return;
-  }
-
-  const remotePath = runyConfig.remotePath;
-  if (!remotePath) {
-    console.error('remotePath is empty');
-    return;
-  }
-
-  const { commands } = runyConfig;
-  if (!commands.length) {
-    console.error('commands are empty');
-    return;
-  }
-
-  run(runyConfig, [
+const getDeployCommands = (runyConfig) => {
+  const { remotePath, commands } = runyConfig;
+  return [
     `cd ${remotePath}`,
     ...commands,
-  ], argv.verbose);
+  ];
+};
+
+const deploy = (argv) => {
+  const runyConfig = getRunyConfig();
+  const commands = getDeployCommands(runyConfig);
+
+  run(runyConfig, commands, argv.verbose);
 };
 
 module.exports = {
-  deploy
+  deploy,
+  getDeployCommands
 };

@@ -1,34 +1,29 @@
-const config = require('../../config');
-const run = require('../helpers/run').run;
-const {
-  runyConfig,
-  isRunyConfigExist
-} = require('../helpers/getRunyConfig');
+const { run } = require('../helpers/run');
+const { getRunyConfig } = require('../helpers/get-runy-config');
 
-const setup = (argv) => {
-  if (!isRunyConfigExist()) {
-    console.error(`${config.configName} has not found`);
-    return;
-  }
-
-  const remotePath = runyConfig.remotePath;
-  if (!remotePath) {
-    console.error('remotePath is empty');
-    return;
-  }
+const getSetupCommands = (runyConfig) => {
+  const { remotePath, git } = runyConfig;
 
   const paths = remotePath.split('/');
   if (paths.pop() === '') paths.pop();
 
   const path = paths.join('/');
 
-  run(runyConfig, [
+  return [
     `mkdir -p ${path}`,
     `cd ${path}`,
-    `git clone ${runyConfig.git}`,
-  ], argv.verbose);
+    `git clone ${git}`,
+  ];
+};
+
+const setup = (argv) => {
+  const runyConfig = getRunyConfig();
+  const commands = getSetupCommands(runyConfig);
+
+  run(runyConfig, commands, argv.verbose);
 };
 
 module.exports = {
-  setup
+  setup,
+  getSetupCommands
 };
