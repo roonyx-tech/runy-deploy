@@ -18,7 +18,7 @@ OR
 
 $ yarn global add @roonyx-tech/runy-deploy
 ```
-> You also can install the package locally and use it via `node_modules/.bin/runy [commands]`
+> You also can install the package locally and use it via `node_modules/.bin/runy [command]`
 
 #### Create config file
 The `init` command will create the `runy.js` config
@@ -36,21 +36,15 @@ Now you have to change `runy.js` file and put there your credentials.
   git: 'link-to-your-git-repository',
   agent: process.env.SSH_AUTH_SOCK,
   commands: [
-    ...
-  ]
-}
-```
-> For the connection to your server you should setup ssh-agent
-
-There are some default commands in commands array. These commands will be executed when you run the `deploy` command. You can edit these commands or add other.
-```
-...
-commands: [
   'git pull origin master',
   'npm install',
   'npm build',
-]
+  ]
+}
 ```
+> For the connection to your server you should setup `ssh-agent`
+
+There are some default commands in commands array. These commands will be executed when you run the `deploy` command. You can edit these commands or add other.
 
 #### Setup remote structure
 The `setup` command will create folders based on your `remotePath` from `runy.js` config. And clone a git repository.
