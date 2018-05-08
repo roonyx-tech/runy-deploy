@@ -4,15 +4,10 @@ const { getRunyConfig } = require('../helpers/get-runy-config');
 const getSetupCommands = (runyConfig) => {
   const { remotePath, git } = runyConfig;
 
-  const paths = remotePath.split('/');
-  if (paths.pop() === '') paths.pop();
-
-  const path = paths.join('/');
-
   return [
-    `mkdir -p ${path}`,
-    `cd ${path}`,
-    `git clone ${git}`,
+    `mkdir -p ${remotePath}`,
+    `cd ${remotePath}`,
+    `git clone ${git} .`,
   ];
 };
 
