@@ -12,12 +12,13 @@ Your server has to have next requirements to work:
 
 #### Install package
 ```bash
-$ npm install --global runy
+$ npm install --global @roonyx-tech/runy-deploy
 
 OR
 
-$ yarn global add runy
+$ yarn global add @roonyx-tech/runy-deploy
 ```
+> You also can install the package locally and use it via `node_modules/.bin/runy [commands]`
 
 #### Create config file
 The `init` command will create the `runy.js` config
@@ -28,13 +29,18 @@ $ runy init
 Now you have to change `runy.js` file and put there your credentials.
 ```
 {
-  ...
-  user: 'username',
   host: '0.0.0.0',
+  username: 'username',
+  port: 22,
   remotePath: '/your/project/path',
-  ...
+  git: 'link-to-your-git-repository',
+  agent: process.env.SSH_AUTH_SOCK,
+  commands: [
+    ...
+  ]
 }
 ```
+> For the connection to your server you should setup ssh-agent
 
 There are some default commands in commands array. These commands will be executed when you run the `deploy` command. You can edit these commands or add other.
 ```
