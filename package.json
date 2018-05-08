@@ -1,7 +1,7 @@
 {
-  "name": "@roonyx-tech/runy-deploy",
-  "version": "1.0.1",
-  "description": "Runy is a deploy tool which allows you deploy your frontend projects very easy",
+  "name": "@roonyx/runy-deploy",
+  "version": "0.0.1",
+  "description": "Runy is a deploy tool which allows you to deploy your frontend projects very easily",
   "main": "index.js",
   "bin": {
     "runy": "./index.js"
