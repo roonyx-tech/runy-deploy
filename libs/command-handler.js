@@ -1,4 +1,4 @@
-const { init, setup, deploy } = require('./commands');
+const { init, setup, deploy, rollback } = require('./commands');
 
 const handleCommand = (command, argv = {}) => {
   switch (command) {
@@ -10,6 +10,9 @@ const handleCommand = (command, argv = {}) => {
       break;
     case 'deploy':
       deploy(argv);
+      break;
+    case 'rollback':
+      rollback();
       break;
     default:
       console.info('Please, enter the valid command or use --help');

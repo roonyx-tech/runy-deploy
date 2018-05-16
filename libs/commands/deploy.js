@@ -1,11 +1,16 @@
 const { run } = require('../helpers/run');
 const { getRunyConfig } = require('../helpers/get-runy-config');
+const cmdList = require('../helpers/command-list');
 
 const getDeployCommands = (runyConfig) => {
-  const { remotePath, commands } = runyConfig;
+  const { commands } = runyConfig;
+
   return [
-    `cd ${remotePath}`,
+    cmdList.IS_LOCK_FILE_EXIST,
+    cmdList.CREATE_LOCK_FILE,
+    cmdList.MOVE_TO_REMOTE_PATH,
     ...commands,
+    cmdList.REMOVE_LOCK_FILE,
   ];
 };
 
