@@ -1,11 +1,11 @@
 const { init } = require('./init');
 const { setup } = require('./setup');
 const { deploy } = require('./deploy');
-const { rollback } = require('./rollback');
+const { unlock } = require('./unlock');
 
 module.exports = {
   init,
   setup,
   deploy,
-  rollback
+  unlock
 };

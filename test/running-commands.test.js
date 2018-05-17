@@ -3,6 +3,7 @@ const { getRunyConfig } = require('../libs/helpers/get-runy-config');
 const { init } = require('../libs/commands/init');
 const { deploy, getDeployCommands } = require('../libs/commands/deploy');
 const { setup, getSetupCommands } = require('../libs/commands/setup');
+const { unlock } = require('../libs/commands/unlock');
 const { run } = require('../libs/helpers/run');
 const { getCmdList } = require('../libs/helpers/command-list');
 const confConfig = require('../libs/config.conf');
@@ -83,5 +84,23 @@ describe('testing of deploy command', () => {
     deploy({ verbose });
     expect(run).toHaveBeenCalledTimes(1);
     expect(run).toHaveBeenCalledWith(runyConfig, commands, verbose);
+  });
+});
+
+describe('testing the unlock command', () => {
+  beforeAll(() => {
+    init();
+    jest.resetAllMocks();
+  });
+  afterAll(() => removeConfig());
+
+  test('the run function is running with correct parameters inside unlock function', () => {
+    const runyConfig = getRunyConfig();
+    const cmdList = getCmdList();
+    const commands = [cmdList.REMOVE_LOCK_FILE];
+
+    unlock();
+    expect(run).toHaveBeenCalledTimes(1);
+    expect(run).toHaveBeenCalledWith(runyConfig, commands);
   });
 });

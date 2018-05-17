@@ -1,5 +1,5 @@
 const {
-  init, setup, deploy, rollback
+  init, setup, deploy, unlock
 } = require('./commands');
 
 const handleCommand = (command, argv = {}) => {
@@ -13,8 +13,8 @@ const handleCommand = (command, argv = {}) => {
     case 'deploy':
       deploy(argv);
       break;
-    case 'rollback':
-      rollback();
+    case 'unlock':
+      unlock();
       break;
     default:
       console.info('Please, enter the valid command or use --help');
