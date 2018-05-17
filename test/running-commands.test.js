@@ -4,6 +4,7 @@ const { init } = require('../libs/commands/init');
 const { deploy, getDeployCommands } = require('../libs/commands/deploy');
 const { setup, getSetupCommands } = require('../libs/commands/setup');
 const { run } = require('../libs/helpers/run');
+const { getCmdList } = require('../libs/helpers/command-list');
 const confConfig = require('../libs/config.conf');
 
 jest.mock('../libs/helpers/run', () => ({
@@ -30,19 +31,15 @@ describe('testing of setup command', () => {
 
   test('the getSetupCommands function return correct array', () => {
     const runyConfig = getRunyConfig();
-    const mockGit = 'mock-git-url';
-    const mockRP = '/my/remote/path';
+    const cmdList = getCmdList();
     const result = [
-      `mkdir -p ${mockRP}`,
-      `cd ${mockRP}`,
-      `git clone ${mockGit} .`
+      cmdList.PREPARE_REMOTE_PATH,
+      cmdList.MOVE_TO_REMOTE_PATH,
+      cmdList.CLONE_PROJECT,
     ];
 
     expect(Array.isArray(getSetupCommands(runyConfig))).toBe(true);
-    expect(getSetupCommands({
-      remotePath: mockRP,
-      git: mockGit
-    })).toEqual(result);
+    expect(getSetupCommands(runyConfig)).toEqual(result);
   });
 
   test('the run function is running with correct parameters inside setup function', () => {
@@ -65,18 +62,17 @@ describe('testing of deploy command', () => {
 
   test('the getDeployCommands function return correct array', () => {
     const runyConfig = getRunyConfig();
-    const mockRemotePath = 'mock-remote-path';
-    const mockCommands = ['mock', 'commands'];
+    const cmdList = getCmdList();
     const result = [
-      `cd ${mockRemotePath}`,
-      ...mockCommands
+      cmdList.IS_LOCK_FILE_EXIST,
+      cmdList.CREATE_LOCK_FILE,
+      cmdList.MOVE_TO_REMOTE_PATH,
+      ...runyConfig.commands,
+      cmdList.REMOVE_LOCK_FILE,
     ];
 
     expect(Array.isArray(getSetupCommands(runyConfig))).toBe(true);
-    expect(getDeployCommands({
-      remotePath: mockRemotePath,
-      commands: mockCommands
-    })).toEqual(result);
+    expect(getDeployCommands(runyConfig)).toEqual(result);
   });
 
   test('the run function is running with correct parameters inside deploy function', () => {

@@ -1,4 +1,6 @@
-const { init, setup, deploy, rollback } = require('./commands');
+const {
+  init, setup, deploy, rollback
+} = require('./commands');
 
 const handleCommand = (command, argv = {}) => {
   switch (command) {

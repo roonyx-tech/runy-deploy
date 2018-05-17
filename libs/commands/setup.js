@@ -1,7 +1,10 @@
 const { run } = require('../helpers/run');
-const cmdList = require('../helpers/command-list');
+const { getRunyConfig } = require('../helpers/get-runy-config');
+const { getCmdList } = require('../helpers/command-list');
 
 const getSetupCommands = () => {
+  const cmdList = getCmdList();
+
   return [
     cmdList.PREPARE_REMOTE_PATH,
     cmdList.MOVE_TO_REMOTE_PATH,

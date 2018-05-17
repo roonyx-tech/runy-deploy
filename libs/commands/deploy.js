@@ -1,9 +1,10 @@
 const { run } = require('../helpers/run');
 const { getRunyConfig } = require('../helpers/get-runy-config');
-const cmdList = require('../helpers/command-list');
+const { getCmdList } = require('../helpers/command-list');
 
 const getDeployCommands = (runyConfig) => {
   const { commands } = runyConfig;
+  const cmdList = getCmdList();
 
   return [
     cmdList.IS_LOCK_FILE_EXIST,
