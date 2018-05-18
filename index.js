@@ -12,7 +12,7 @@ yargs
   .command('deploy', 'Deploy project to remote server', {
     verbose: aliases.verbose
   })
-  .command('rollback', 'Remove the lock file')
+  .command('unlock', 'Remove the lock file')
   .help();
 
 const argv = yargs.argv;
