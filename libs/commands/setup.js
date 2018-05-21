@@ -6,9 +6,9 @@ const getSetupCommands = () => {
   const cmdList = getCmdList();
 
   return [
-    cmdList.PREPARE_REMOTE_PATH,
-    cmdList.MOVE_TO_REMOTE_PATH,
-    cmdList.CLONE_PROJECT,
+    cmdList.CREATE_PROJECT_FODLER,
+    cmdList.CREATE_RELEASES_FOLDER,
+    cmdList.CREATE_CURRENT_RELEASE_FILE,
   ];
 };
 

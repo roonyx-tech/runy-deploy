@@ -6,7 +6,6 @@ module.exports = {
   git: 'link-to-your-git-repository',
   agent: process.env.SSH_AUTH_SOCK,
   commands: [
-    'git pull origin master',
     'npm install',
     'npm run build',
   ],
