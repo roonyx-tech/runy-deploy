@@ -2,7 +2,7 @@ module.exports = {
   configName: 'runy.js',
   lockFileName: '.runy.lock',
   releaseFolderName: 'releases',
-  currentFolderName: 'current',
+  symbolicName: 'current',
   currentReleaseFile: '.current.release',
   tempFolderName: 'temp',
   releaseVariable: 'RUNY_RELEASE',

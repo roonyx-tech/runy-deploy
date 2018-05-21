@@ -4,6 +4,7 @@ const { init } = require('../libs/commands/init');
 const { deploy, getDeployCommands } = require('../libs/commands/deploy');
 const { setup, getSetupCommands } = require('../libs/commands/setup');
 const { unlock } = require('../libs/commands/unlock');
+const { rollback, getRollbackCommands } = require('../libs/commands/rollback');
 const { run } = require('../libs/helpers/run');
 const { getCmdList } = require('../libs/helpers/command-list');
 const confConfig = require('../libs/config.conf');
@@ -76,12 +77,13 @@ describe('testing of deploy command', () => {
       cmdList.MOVE_TO_PROJECT_FOLDER,
       cmdList.MOVE_TEMP_FOLDER_TO_NEW_RELEASE_FOLDER,
       cmdList.CHECK_AND_REMOVE_OLD_RELEASE,
+      cmdList.REMOVE_RELEASE_SYMBOLIC_LINK,
       cmdList.MAKE_RELEASE_SYMBOLIC_LINK,
       cmdList.UPDATE_CURRENT_RELEASE_FILE,
       cmdList.REMOVE_LOCK_FILE,
     ];
 
-    expect(Array.isArray(getSetupCommands(runyConfig))).toBe(true);
+    expect(Array.isArray(getDeployCommands(runyConfig))).toBe(true);
     expect(getDeployCommands(runyConfig)).toEqual(result);
   });
 
@@ -109,6 +111,39 @@ describe('testing the unlock command', () => {
     const commands = [cmdList.REMOVE_LOCK_FILE];
 
     unlock();
+    expect(run).toHaveBeenCalledTimes(1);
+    expect(run).toHaveBeenCalledWith(runyConfig, commands);
+  });
+});
+
+describe('testing the rollback command', () => {
+  beforeAll(() => {
+    init();
+    jest.resetAllMocks();
+  });
+  afterAll(() => removeConfig());
+
+  test('the getRollbackCommands function return correct array', () => {
+    const cmdList = getCmdList();
+    const result = [
+      cmdList.PUT_CURRENT_RELEASE_TO_VARIABLE,
+      cmdList.DECREASE_CURRENT_RELEASE_VALIABLE,
+      cmdList.REMOVE_RELEASE_SYMBOLIC_LINK,
+      cmdList.MAKE_RELEASE_SYMBOLIC_LINK,
+      cmdList.UPDATE_CURRENT_RELEASE_FILE,
+      cmdList.INCREASE_CURRENT_RELEASE_VALIABLE,
+      cmdList.REMOVE_RELEASE_BY_VAR,
+    ];
+
+    expect(Array.isArray(getRollbackCommands())).toBe(true);
+    expect(getRollbackCommands()).toEqual(result);
+  });
+
+  test('the run function is running with correct parameters inside rollback function', () => {
+    const runyConfig = getRunyConfig();
+    const commands = getRollbackCommands();
+
+    rollback();
     expect(run).toHaveBeenCalledTimes(1);
     expect(run).toHaveBeenCalledWith(runyConfig, commands);
   });
