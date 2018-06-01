@@ -1,7 +1,7 @@
 {
   "name": "@roonyx/runy-deploy",
-  "version": "1.0.0",
-  "description": "Runy is a deploy tool which allows you to deploy your frontend projects very easily",
+  "version": "1.0.1",
+  "description": "Runy-deploy is a deployment tool which allows you to deploy your frontend projects very easily",
   "main": "index.js",
   "bin": {
     "runy": "./index.js"
@@ -14,18 +14,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/roonyx/runy.git"
+    "url": "git+https://github.com/roonyx-tech/runy-deploy.git"
   },
   "keywords": [
     "deploy",
-    "frontend-deploy"
+    "deployment",
+    "frontend",
+    "ssh-deploy",
+    "ssh",
+    "production",
+    "dev",
+    "git",
+    "release",
+    "devops"
   ],
-  "author": "roonyx",
+  "author": "Roonyx Team <go@roonyx.tech>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/roonyx/runy/issues"
+    "url": "https://github.com/roonyx-tech/runy-deploy/issues"
   },
-  "homepage": "https://github.com/roonyx/runy#readme",
+  "homepage": "https://github.com/roonyx-tech/runy-deploy#readme",
   "dependencies": {
     "debug": "^3.1.0",
     "ssh2": "^0.6.0",
