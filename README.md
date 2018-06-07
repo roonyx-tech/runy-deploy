@@ -1,6 +1,6 @@
 # Runy
 
-Runy is a deploy tool which allows you to deploy your frontend application very easily.
+Runy-deploy is a deployment tool which allows you to deploy your frontend application very easily.
 
 # Setup
 #### Configure server
@@ -36,8 +36,8 @@ Now you have to change `runy.js` file and put there your credentials.
   git: 'link-to-your-git-repository',
   agent: process.env.SSH_AUTH_SOCK,
   commands: [
-  'npm install',
-  'npm build',
+    'npm install',
+    'npm run build',
   ]
 }
 ```
