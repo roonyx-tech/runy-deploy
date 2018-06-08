@@ -23,7 +23,7 @@ const run = (config, commands, verbose = false) => {
       host: config.host,
       userName: config.username,
       port: config.port,
-      agent: config.agent,
+      agent: config.agent ? config.agent : process.env.SSH_AUTH_SOCK,
       agentForward: true,
       keep_alive: true,
     },

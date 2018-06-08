@@ -30,13 +30,20 @@ const validateRunyConfig = (runyConfig) => {
           key,
           description: `key ${key} of ${config.configName} can\`t be an empty array`
         });
-      } else if (isString && !runyConfig[key].trim()) {
+      } else if (isString && !runyConfig[key]) {
         errors.push({
           key,
           description: `key ${key} of ${config.configName} can\`t be an empty string`
         });
       }
     });
+
+  if ('agent' in runyConfig && (typeof runyConfig.agent !== (typeof ''))) {
+    errors.push({
+      key: 'agent',
+      description: `key agent of ${config.configName} config should be a string`,
+    });
+  }
 
   if (errors.length) {
     throw new Error(JSON.stringify({
