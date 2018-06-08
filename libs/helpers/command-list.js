@@ -26,6 +26,7 @@ const getCmdList = () => {
   const CREATE_RELEASES_FOLDER = `mkdir -p ${pReleaseD}`;
   const CREATE_CURRENT_RELEASE_FILE = `echo 0 > ${pReleaseF}`;
   const CREATE_TEMP_FOLDER = `mkdir -p ${pTempD}`;
+  const REMOVE_TEMP_FOLDER = `([ $(echo $(pwd)) != / ] && [ -d ${pTempD} ] && rm -rf ${pTempD}) || echo`; // this command has to return true for any cases
   const MOVE_TO_TEMP_FOLDER = `cd ${pTempD}`;
   const PUT_CURRENT_RELEASE_TO_VARIABLE = `${releaseVariable}=$(cat ${pReleaseF})`;
   const INCREASE_CURRENT_RELEASE_VALIABLE = `${releaseVariable}=$(($${releaseVariable} + 1))`;
@@ -69,6 +70,7 @@ const getCmdList = () => {
     DECREASE_CURRENT_RELEASE_VALIABLE,
     REMOVE_RELEASE_SYMBOLIC_LINK,
     REMOVE_RELEASE_BY_VAR,
+    REMOVE_TEMP_FOLDER,
   };
 };
 
