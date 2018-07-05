@@ -34,14 +34,13 @@ Now you have to change `runy.js` file and put there your credentials.
   port: 22,
   remotePath: '/your/project/path',
   git: 'link-to-your-git-repository',
-  agent: process.env.SSH_AUTH_SOCK,
   commands: [
     'npm install',
     'npm run build',
   ]
 }
 ```
-> For the connection to your server you should setup `ssh-agent`.
+> For the connection to your server you should setup `ssh-agent`. Also you can add `agent` key path to `runy.js` config manualy (by default that value is `process.env.SSH_AUTH_SOCK`).
 
 There are some default commands in `commands` array. These commands will be executed when you run the `deploy` command. You can edit these commands or add other.
 > You have to put commands to that array which install dependencies and build your project.

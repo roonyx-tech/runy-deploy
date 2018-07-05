@@ -68,6 +68,7 @@ describe('testing of deploy command', () => {
     const result = [
       cmdList.IS_LOCK_FILE_EXIST,
       cmdList.CREATE_LOCK_FILE,
+      cmdList.REMOVE_TEMP_FOLDER,
       cmdList.CREATE_TEMP_FOLDER,
       cmdList.MOVE_TO_TEMP_FOLDER,
       cmdList.CLONE_PROJECT,
